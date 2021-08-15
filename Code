@@ -1,0 +1,41 @@
+import java.security.SignatureException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.*;
+import javax.swing.*;
+
+public class NewClass {
+
+    private static boolean DoB;
+
+    public static void main(String[] args) {
+
+        System.out.println("Welcome to the best Java program ever!!! \n Please Enter" +
+            "Your Personal number 10 or 12 digits");
+
+        //Scanner to take user input
+        Scanner userInput = new Scanner(System.in);
+        String fullDoB = userInput.nextLine();
+
+        // To parse the date in year month and day format
+
+        Date date = new Date();
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        var year = localDate.getYear();
+        var day = localDate.getDayOfMonth();
+        var month = localDate.getMonthValue();
+
+        //Assigning the day and the month to one var then compare it with user input
+
+        var xyz = String.valueOf(day + String.valueOf(month));
+
+        if (fullDoB.length() == 12 && fullDoB.substring(4, 7).equals(xyz) ||
+            fullDoB.length() == 10 && fullDoB.substring(2, 5).equals(xyz)) {
+
+            System.out.println("Happy Birth Day!!! Hoof Hoof !!!");
+        } else
+            System.out.println("Today is not your Birthday");
+
+
+    }
+}
